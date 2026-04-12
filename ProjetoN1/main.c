@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "lista.h"
+#include "dados.h"
+
 
 int main() {
 
-    system("cls");
-
+    //Criar o vetor de arquivos para não precisar chamar a função para ler 1 por 1, e facilitar a leitura dos arquivos
     char *vetorArquivos[] = {
     "teste_TRE-AC.csv",
     "teste_TRE-AL.csv",
@@ -39,7 +39,12 @@ int main() {
     NULL
     };
 
+    system("cls");
+
+
     Dados *dados = juntar_dados(vetorArquivos, 1);
+    Resumo *resumo = resumir_dados("dados_finais.csv");
+    buscarMunicipio();
 
 
     return 0;

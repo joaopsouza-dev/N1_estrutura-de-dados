@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #define TAMANHO 500
+#define TAM_LINHA 4500
 
 /*
 "sigla_tribunal","procedimento","ramo_justica","sigla_grau","uf_oj","municipio_oj", ================ CHAR
@@ -56,5 +57,61 @@ typedef struct {
 } Dados;
 
 Dados * juntar_dados(char *vetorArquivos[], bool primeiroArquivo);
+void buscarMunicipio();
+
+
+
+
+// struct para os dados que serão utilizados do arquivo 'dados_finais.csv'
+
+// Meta1, Meta2A, Meta2Ant, Meta4A e Meta4B.
+
+
+typedef struct {
+
+    char sigla_tribunal[TAMANHO];
+
+    // acumuladores (dados reais do CSV)
+    //long long utilizado para dados muito grandes, maiores que o int 
+
+    long long total_julgados;
+    
+    //Acumuladores para META 1
+    long long soma_julgados;
+    long long soma_casos_novos;
+    long long soma_dessobrestados;
+    long long soma_suspensos;
+
+    //Acumuladores para meta 2Ant
+    long long soma_distm2_a;
+    long long soma_julgm2_a;
+    long long soma_suspm2_a;
+
+    //Acumuladores para Meta2Ant
+    long long soma_distm2_ant;
+    long long soma_julgm2_ant;
+    long long soma_suspm2_ant;
+    long long soma_desom2_ant;
+
+    //Acumuladores para Meta4A
+    long long soma_distm4_a;
+    long long soma_julgm4_a;
+    long long soma_suspm4_a;
+
+    //Acumuladores para Meta4B 
+    long long soma_distm4_b;
+    long long soma_julgm4_b;
+    long long soma_suspm4_b;
+
+    // resultados finais
+    float meta1;
+    float meta2A;
+    float meta2Ant;
+    float meta4A;
+    float meta4B;
+
+} Resumo;
+
+Resumo * resumir_dados(char *arquivo);
 
 #endif
